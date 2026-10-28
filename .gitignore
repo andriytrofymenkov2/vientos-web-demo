@@ -1,0 +1,14 @@
+# Solo se publica la página. Queda afuera todo lo interno del proyecto.
+dev/
+*.md
+img/marca/
+img/servicios/
+img/shop/
+
+# Nunca subir credenciales ni respaldos
+*.txt
+!robots.txt
+*.bak
+*contrase*
+*clave*
+.env*
