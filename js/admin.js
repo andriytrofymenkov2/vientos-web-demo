@@ -313,6 +313,12 @@
     reader.readAsDataURL(file);
   });
 
+  // Sin foto, el producto vuelve a mostrar su ilustración.
+  $("[data-pr-sin-foto]").addEventListener("click", function () {
+    $("[data-pr-img]").value = "";
+    $("[data-pr-file]").value = "";
+  });
+
   $("[data-form-prod]").addEventListener("submit", function (e) {
     e.preventDefault();
     var id = $("[data-pr-id]").value;
@@ -461,13 +467,11 @@
     $("[data-cfg-wa]").value = V.whatsapp || "";
     $("[data-cfg-tel]").value = V.telefonoVisible || "";
     $("[data-cfg-ig]").value = V.instagram || "";
-    $("[data-cfg-dj]").value = V.djForm || "";
   }
   function leerContactoAdmin() {
     V.whatsapp = $("[data-cfg-wa]").value.trim() || V.whatsapp;
     V.telefonoVisible = $("[data-cfg-tel]").value.trim() || V.telefonoVisible;
     V.instagram = $("[data-cfg-ig]").value.trim() || V.instagram;
-    V.djForm = $("[data-cfg-dj]").value.trim() || V.djForm;
   }
 
   /* ---------- 5. Sesión y publicación en Supabase (mismo proyecto que la app de socios) ---------- */
@@ -620,61 +624,6 @@
     toast("Sesión cerrada");
   });
 
-  $("[data-sb-traer]").addEventListener("click", function () {
-    fetch(SB_URL + "/rest/v1/vientos_web_contenido?id=eq.principal&select=datos", {
-      headers: { "apikey": SB.anonKey, "Authorization": "Bearer " + SB.anonKey }
-    }).then(function (r) { return r.ok ? r.json() : Promise.reject(new Error("HTTP " + r.status)); }).then(function (rows) {
-      if (rows && rows[0] && rows[0].datos) {
-        Object.keys(rows[0].datos).forEach(function (k) { V[k] = rows[0].datos[k]; });
-        vistaPreviaLocal();
-        inicializarVista();
-        toast("Datos traídos de la web publicada");
-      } else {
-        toast("Todavía no se publicó nada desde el panel", true);
-      }
-    }).catch(function () {
-      toast("No se pudo leer Supabase. ¿Ya se corrió supabase/schema.sql?", true);
-    });
-  });
-
-  $("[data-restaurar-original]").addEventListener("click", function () {
-    if (!confirm("¿Querés restaurar todos los horarios, productos y textos a los valores originales?")) return;
-    localStorage.removeItem("vientos_cms_datos_v1");
-    window.VIENTOS = JSON.parse(JSON.stringify(window.VIENTOS_DEFAULT));
-    V = window.VIENTOS;
-    inicializarVista();
-    toast("Valores originales restaurados");
-  });
-
-  $("[data-copiar-sql]").addEventListener("click", function () {
-    var txt = $("[data-sql-code]").textContent;
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(txt);
-      toast("Script SQL copiado al portapapeles");
-    }
-  });
-
-  // Descargar archivo datos.js actualizado
-  $("[data-descargar-js]").addEventListener("click", function () {
-    recolectarTodo();
-    // Mantiene el resto del archivo (conexión a Supabase y carga) y reemplaza solo los datos.
-    fetch("js/datos.js", { cache: "no-store" }).then(function (r) { return r.text(); }).then(function (original) {
-      var ini = original.indexOf("window.VIENTOS_DEFAULT = ");
-      var fin = original.indexOf("\n};\n", ini) + 4;
-      bajar(original.slice(0, ini) + "window.VIENTOS_DEFAULT = " + JSON.stringify(V, null, 2) + ";\n" + original.slice(fin));
-    });
-  });
-
-  function bajar(contenido) {
-    var blob = new Blob([contenido], { type: "application/javascript;charset=utf-8" });
-    var a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "datos.js";
-    a.click();
-    URL.revokeObjectURL(a.href);
-    toast("Archivo datos.js descargado");
-  }
-
   function inicializarVista() {
     pintarSemana();
     cargarInputsHorarios();
@@ -687,4 +636,6 @@
   }
 
   inicializarVista();
+  // Cuando llega lo publicado en Supabase, el panel arranca desde ahí (y no desde lo de fábrica).
+  window.addEventListener("vientos:datos-actualizados", inicializarVista);
 })();

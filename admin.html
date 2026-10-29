@@ -55,7 +55,6 @@
   </div>
   <div class="adm-top__der">
     <a class="adm-btn" href="index.html" target="_blank" rel="noopener">Ver página web ↗</a>
-    <button type="button" class="adm-btn" data-descargar-js>Descargar datos.js</button>
     <button type="button" class="adm-btn" data-sb-salir>Salir</button>
     <button type="button" class="adm-btn adm-btn--red" data-guardar-todo>
       <svg class="ico"><use href="#i-check"/></svg><span>Guardar y publicar</span>
@@ -69,7 +68,6 @@
     <button type="button" class="adm-nav__btn" data-tab="shop">Shop / Productos</button>
     <button type="button" class="adm-nav__btn" data-tab="servicios">Servicios y Planes</button>
     <button type="button" class="adm-nav__btn" data-tab="convenios">Convenios y Contacto</button>
-    <button type="button" class="adm-nav__btn" data-tab="supabase">Publicación</button>
   </nav>
 
   <main class="adm-main">
@@ -209,115 +207,7 @@
             <label>Link de Instagram</label>
             <input type="url" class="adm-input" data-cfg-ig>
           </div>
-          <div class="adm-campo">
-            <label>Formulario "El DJ sos vos"</label>
-            <input type="url" class="adm-input" data-cfg-dj>
-          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- 5. CONEXIÓN SUPABASE -->
-    <section class="adm-panel" data-panel="supabase" hidden>
-      <div class="adm-sec">
-        <div class="adm-sec__cab">
-          <div>
-            <h2 class="adm-sec__titulo">Publicación</h2>
-            <p class="adm-sec__sub">La web usa el mismo Supabase que la app de socios. Lo que guardes acá se publica en la página para todos. Solo la cuenta administradora (grupoamplifia@gmail.com) puede entrar a este panel.</p>
-          </div>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;gap:.6rem">
-          <button type="button" class="adm-btn" data-sb-traer>Traer lo publicado</button>
-          <button type="button" class="adm-btn adm-btn--danger" data-restaurar-original>Restaurar valores de fábrica</button>
-        </div>
-      </div>
-
-      <div class="adm-sec">
-        <div class="adm-sec__cab">
-          <div>
-            <h2 class="adm-sec__titulo">Script SQL para tu proyecto de Supabase</h2>
-            <p class="adm-sec__sub">Copiá y ejecutá este bloque una sola vez en el SQL Editor de tu Supabase para crear la tabla de la web y el bucket de imágenes. Solo puede editar la cuenta grupoamplifia@gmail.com.</p>
-          </div>
-          <button type="button" class="adm-btn adm-btn--sm" data-copiar-sql>Copiar SQL</button>
-        </div>
-        <pre class="adm-sql" data-sql-code>-- =============================================================================
--- VIENTOS GYM · Esquema SQL para conectar la web y el panel admin con Supabase
--- Ejecutá este script una sola vez (después de los scripts de la app) en el SQL Editor de tu proyecto de Supabase.
--- Va en el MISMO proyecto de Supabase que la app de socios (vientos-gym).
--- Cualquiera puede LEER el contenido de la web, solo UNA cuenta puede EDITARLA:
--- grupoamplifia@gmail.com (la cuenta administradora de la app). Nadie más.
--- =============================================================================
-
--- Contenido de la web (horarios, shop, servicios, planes y convenios)
-create table if not exists public.vientos_web_contenido (
-  id text primary key default &#x27;principal&#x27;,
-  datos jsonb not null default &#x27;{}&#x27;::jsonb,
-  actualizado_en timestamptz not null default now(),
-  actualizado_por uuid references auth.users(id) on delete set null
-);
-
--- Quién puede editar la web: solo la cuenta grupoamplifia@gmail.com, con el email confirmado.
--- El email se lee de auth.users (no del token), así que nadie puede hacerse pasar por ella.
--- Los socios, los profes y los demás administradores de la app no pueden editar.
-create or replace function public.es_admin_web()
-returns boolean
-language sql
-stable
-security definer
-set search_path = public, auth
-as $$
-  select exists (
-    select 1 from auth.users u
-    where u.id = auth.uid()
-      and lower(u.email) = &#x27;grupoamplifia@gmail.com&#x27;
-      and u.email_confirmed_at is not null
-  );
-$$;
-revoke all on function public.es_admin_web() from public;
-grant execute on function public.es_admin_web() to anon, authenticated;
-
-alter table public.vientos_web_contenido enable row level security;
-grant select on public.vientos_web_contenido to anon, authenticated;
-grant insert, update on public.vientos_web_contenido to authenticated;
-
-drop policy if exists &quot;Lectura publica de contenido web&quot; on public.vientos_web_contenido;
-create policy &quot;Lectura publica de contenido web&quot;
-  on public.vientos_web_contenido for select
-  to anon, authenticated
-  using (true);
-
-drop policy if exists &quot;Escritura admin autenticado&quot; on public.vientos_web_contenido;
-drop policy if exists &quot;Escritura admin web&quot; on public.vientos_web_contenido;
-create policy &quot;Escritura solo administradores web&quot;
-  on public.vientos_web_contenido for all
-  to authenticated
-  using (public.es_admin_web())
-  with check (public.es_admin_web());
-
--- Fotos de productos y disciplinas
-insert into storage.buckets (id, name, public)
-values (&#x27;vientos-web&#x27;, &#x27;vientos-web&#x27;, true)
-on conflict (id) do nothing;
-
-drop policy if exists &quot;Fotos web publicas&quot; on storage.objects;
-create policy &quot;Fotos web publicas&quot;
-  on storage.objects for select
-  to anon, authenticated
-  using (bucket_id = &#x27;vientos-web&#x27;);
-
-drop policy if exists &quot;Admin sube fotos web&quot; on storage.objects;
-create policy &quot;Admin sube fotos web&quot;
-  on storage.objects for insert
-  to authenticated
-  with check (bucket_id = &#x27;vientos-web&#x27; and public.es_admin_web());
-
-drop policy if exists &quot;Admin actualiza fotos web&quot; on storage.objects;
-create policy &quot;Admin actualiza fotos web&quot;
-  on storage.objects for update
-  to authenticated
-  using (bucket_id = &#x27;vientos-web&#x27; and public.es_admin_web());
-
--- Para comprobar: con la sesión de grupoamplifia@gmail.com, select public.es_admin_web() tiene que dar true.</pre>
       </div>
     </section>
 
@@ -436,6 +326,7 @@ create policy &quot;Admin actualiza fotos web&quot;
             <span>Subir foto</span>
             <input type="file" accept="image/*" data-pr-file hidden>
           </label>
+          <button type="button" class="adm-btn adm-btn--sm" style="flex:none" data-pr-sin-foto>Quitar foto</button>
         </div>
       </div>
       <label class="adm-check">
@@ -454,6 +345,6 @@ create policy &quot;Admin actualiza fotos web&quot;
 <div class="adm-toast" data-toast role="status">Cambios guardados</div>
 
 <script src="js/datos.js?v=12"></script>
-<script src="js/admin.js?v=6"></script>
+<script src="js/admin.js?v=7"></script>
 </body>
 </html>
