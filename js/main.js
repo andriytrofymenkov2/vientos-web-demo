@@ -188,7 +188,7 @@
   }
   $$("[data-cinta]").forEach(function (n) {
     if (n.getAttribute("data-cinta") === "frases") {
-      cinta(n, ["Tu objetivo es nuestra meta", "Entrená con un propósito", "Nunca es tarde para empezar", "La salud por encima de la estética", "Pellegrini 545 · Río Gallegos"], 2);
+      cinta(n, ["Entrená con el viento a favor", "Entrená con un propósito", "Nunca es tarde para empezar", "La salud por encima de la estética", "Pellegrini 545 · Río Gallegos"], 2);
     } else {
       cinta(n, V.servicios.map(function (s) { return s.largo || s.nombre; }), 2);
     }
