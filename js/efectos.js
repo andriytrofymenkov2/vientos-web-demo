@@ -1,4 +1,4 @@
-/* Efectos premium: barra de progreso, cursor propio y botones magnéticos (solo con mouse).
+/* Efectos premium: barra de progreso, cursor propio en top-layer y botones magnéticos (solo con mouse).
    La intro con el logo está en index.html para que aparezca antes que todo. */
 (function () {
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
@@ -21,12 +21,32 @@
 
   if (!mouse.matches) return;
 
-  /* ---------- Cursor propio ---------- */
+  /* ---------- Cursor propio (compatible con <dialog> en top-layer) ---------- */
+  var capa = document.createElement("div");
+  capa.className = "cursor-capa";
+  capa.setAttribute("aria-hidden", "true");
+  var soportaPopover = "showPopover" in HTMLElement.prototype;
+  if (soportaPopover) capa.setAttribute("popover", "manual");
+
   var punto = document.createElement("div"), aro = document.createElement("div");
   punto.className = "cursor-punto";
   aro.className = "cursor-aro";
   aro.innerHTML = "<span></span>";
-  [punto, aro].forEach(function (n) { n.setAttribute("aria-hidden", "true"); document.body.appendChild(n); });
+  capa.appendChild(punto);
+  capa.appendChild(aro);
+  document.body.appendChild(capa);
+
+  function promoverCursor() {
+    if (soportaPopover) {
+      try {
+        if (capa.matches(":popover-open")) capa.hidePopover();
+        capa.showPopover();
+      } catch (e) {}
+    }
+  }
+  promoverCursor();
+  window.vientosPromoverCursor = promoverCursor;
+
   document.documentElement.classList.add("con-cursor");
   var etiqueta = aro.firstChild;
   var x = innerWidth / 2, y = innerHeight / 2, ax = x, ay = y, visible = false;
@@ -46,8 +66,8 @@
 
   function modo(e) {
     var foto = e.target.closest(".tile, .extra, .prod, .ig a");
-    var link = e.target.closest("a, button, .chip, label");
-    var campo = e.target.closest("input, textarea, iframe");
+    var link = e.target.closest("a, button, .chip, label, .hor__chip");
+    var campo = e.target.closest("input, textarea, iframe, select");
     aro.classList.toggle("is-foto", !!foto);
     aro.classList.toggle("is-link", !foto && !!link);
     document.documentElement.classList.toggle("cursor-oculto", !!campo);

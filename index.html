@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Vientos GYM · Gimnasio en Río Gallegos</title>
-<meta name="description" content="Vientos GYM, Pellegrini 545, Río Gallegos. Musculación, entrenamiento semipersonalizado, calistenia, ciclo indoor, kick boxing, wushu y sanda. Lunes a viernes de 6 a 23 h y sábados de 10 a 20 h.">
+<meta name="description" content="Vientos GYM, Pellegrini 545, Río Gallegos. Musculación, entrenamiento semipersonalizado, calistenia, ciclo indoor, kick boxing, wushu y sanda. Lunes a viernes de 06:00 a 23:00 hs y sábados de 10:00 a 20:00 hs.">
 <meta name="theme-color" content="#0a0a0b">
 <!-- Demo para el cliente: sin indexar en buscadores hasta publicarla en su dominio -->
 <meta name="robots" content="noindex, nofollow">
@@ -20,7 +20,7 @@
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/barlowc-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/barlowc-700i.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/estilos.css?v=6">
+<link rel="stylesheet" href="css/estilos.css?v=12">
 <script>document.documentElement.classList.add("js");</script>
 <script type="application/ld+json">
 {
@@ -59,6 +59,11 @@
     <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.6h2.6l.4-3.1h-3V8.4c0-.9.3-1.5 1.5-1.5h1.6V4.1c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.3H7.8v3.1h2.6V21h3.1Z"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15M13 6l6 6-6 6"/></symbol>
     <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 4v15M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M15 6l-6 6 6 6"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></g></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="1.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></g></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M5 3.5h3.5l1.8 4.6-2.3 1.5a11.5 11.5 0 0 0 6.4 6.4l1.5-2.3 4.6 1.8V19a2 2 0 0 1-2 2A16.5 16.5 0 0 1 3 5.5a2 2 0 0 1 2-2Z"/></symbol>
     <symbol id="i-bag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4.5 8h15l-1.3 12.5H5.8L4.5 8Z"/><path d="M9 8V6.8a3 3 0 0 1 6 0V8"/></g></symbol>
@@ -93,20 +98,28 @@
   </a>
   <nav class="nav__links" aria-label="Secciones">
     <a href="#servicios">Servicios</a>
+    <a href="#planes">Planes</a>
     <a href="#horarios">Horarios</a>
     <a href="#shop">Shop</a>
     <a href="#convenios">Convenios</a>
     <a href="#contacto">Contacto</a>
   </nav>
-  <a class="btn btn--red btn--sm nav__cta" data-wa="general" href="https://wa.me/5492966218045" target="_blank" rel="noopener">
-    <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span>
-  </a>
-  <button class="nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+  <div class="nav__acciones">
+    <button class="nav__bag" type="button" data-abrir-pedido-nav hidden aria-label="Abrir pedido">
+      <svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg>
+      <b data-pedido-n-nav>0</b>
+    </button>
+    <a class="btn btn--red btn--sm nav__cta" data-wa="general" href="https://wa.me/5492966218045" target="_blank" rel="noopener">
+      <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span>
+    </a>
+    <button class="nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+  </div>
 </header>
 
 <div class="menu" id="menu" hidden>
   <nav class="menu__links" aria-label="Menú">
     <a href="#servicios">Servicios</a>
+    <a href="#planes">Planes</a>
     <a href="#horarios">Horarios</a>
     <a href="#shop">Shop</a>
     <a href="#convenios">Convenios</a>
@@ -134,7 +147,7 @@
     <canvas class="hero__viento" id="viento" aria-hidden="true"></canvas>
     <div class="hero__inner">
       <p class="hero__kicker">
-        <span class="estado" data-estado><i class="estado__dot"></i><span class="estado__txt">Lunes a viernes de 6 a 23 h</span></span>
+        <span class="estado" data-estado><i class="estado__dot"></i><span class="estado__txt">Lunes a viernes de 06:00 a 23:00 hs</span></span>
         <span class="hero__dir">Pellegrini 545 · Río Gallegos</span>
       </p>
       <h1 class="hero__title">
@@ -183,10 +196,16 @@
     <header class="cabeza">
       <p class="eyebrow rv">Servicios</p>
       <h2 class="titulo" id="t-servicios" data-split>Una sala, <em>ocho formas</em> de entrenar.</h2>
-      <p class="texto rv">Musculación, clases grupales y disciplinas de combate. Elegí la tuya y consultanos por WhatsApp.</p>
+      <p class="texto rv">Musculación, clases grupales y disciplinas de combate. Tocá cada disciplina para ver horarios, profesores y consultar cupos.</p>
     </header>
     <div class="tiles" data-tiles></div>
-    <div class="tiles__barra" aria-hidden="true"><i data-tiles-barra></i></div>
+    <div class="tiles__controles" aria-hidden="true">
+      <div class="tiles__barra"><i data-tiles-barra></i></div>
+      <div class="tiles__nav">
+        <button type="button" class="tiles__btn" data-tiles-prev aria-label="Anterior"><svg class="ico"><use href="#i-prev"/></svg></button>
+        <button type="button" class="tiles__btn" data-tiles-next aria-label="Siguiente"><svg class="ico"><use href="#i-next"/></svg></button>
+      </div>
+    </div>
   </section>
 
   <section class="empezar" id="empezar" aria-labelledby="t-empezar">
@@ -205,6 +224,15 @@
     </div>
   </section>
 
+  <section class="planes" id="planes" aria-labelledby="t-planes">
+    <header class="cabeza">
+      <p class="eyebrow rv">Planes y pases</p>
+      <h2 class="titulo" id="t-planes" data-split>Elegí tu ritmo, <em>entrená a tu manera.</em></h2>
+      <p class="texto rv">Modalidades flexibles para sala libre, disciplinas o pases combinados. Si trabajás en una entidad con convenio, tenés descuento directo.</p>
+    </header>
+    <div class="planes__grid" data-planes></div>
+  </section>
+
   <section class="horarios" id="horarios" aria-labelledby="t-horarios">
     <div class="horarios__cab">
       <div>
@@ -212,16 +240,24 @@
         <h2 class="titulo" id="t-horarios" data-split>Abrimos temprano, <em>cerramos tarde.</em></h2>
       </div>
       <div class="horarios__gym rv">
-        <p class="hor__estado" data-estado-largo>Lunes a viernes de 6 a 23 h</p>
-        <dl class="hor__rows">
-          <div><dt>Lunes a viernes</dt><dd>6 — 23 h</dd></div>
-          <div><dt>Sábados</dt><dd>10 — 20 h</dd></div>
-          <div><dt>Domingos</dt><dd>Cerrado</dd></div>
+        <p class="hor__estado" data-estado-largo>Lunes a viernes de 06:00 a 23:00 hs</p>
+        <dl class="hor__rows" data-horario-filas>
+          <div><dt>Lunes a viernes</dt><dd data-hor-lv>06:00 a 23:00 hs</dd></div>
+          <div><dt>Sábados</dt><dd data-hor-sab>10:00 a 20:00 hs</dd></div>
+          <div><dt>Domingos</dt><dd data-hor-dom>Cerrado</dd></div>
         </dl>
       </div>
     </div>
+
+    <div class="hor__aviso rv" data-aviso-horario hidden></div>
+
+    <div class="hor__controles rv">
+      <div class="hor__filtros" role="tablist" aria-label="Filtrar por disciplina" data-grilla-filtros></div>
+      <div class="hor__dias" role="tablist" aria-label="Elegir día" data-grilla-dias></div>
+    </div>
+
     <div class="grilla rv" data-grilla aria-label="Clases de la semana"></div>
-    <p class="nota rv">Kick boxing y stretching: consultá días y horarios. En feriados el horario puede cambiar y lo avisamos en Instagram. <a class="link-flecha" data-wa="general" href="https://wa.me/5492966218045" target="_blank" rel="noopener">Consultá cupos por WhatsApp</a></p>
+    <p class="nota rv">Tocá cualquier clase de la grilla para consultar cupo directo por WhatsApp. Kick boxing y stretching: consultá días y horarios. En feriados el horario puede cambiar y lo avisamos acá y en Instagram. <a class="link-flecha" data-wa="general" href="https://wa.me/5492966218045" target="_blank" rel="noopener">Consultá cupos por WhatsApp</a></p>
   </section>
 
   <section class="ademas" aria-labelledby="t-ademas">
@@ -307,8 +343,8 @@
         <a class="btn btn--ghost" href="tel:+5492966218045"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span>Llamar</span></a>
       </div>
       <dl class="contacto__hor rv">
-        <div><dt>Lunes a viernes</dt><dd>6 a 23 h</dd></div>
-        <div><dt>Sábados</dt><dd>10 a 20 h</dd></div>
+        <div><dt>Lunes a viernes</dt><dd data-hor-lv-txt>06:00 a 23:00 hs</dd></div>
+        <div><dt>Sábados</dt><dd data-hor-sab-txt>10:00 a 20:00 hs</dd></div>
       </dl>
     </div>
   </section>
@@ -324,12 +360,12 @@
   <div class="pie__cols">
     <div class="pie__col">
       <p class="kicker">Secciones</p>
-      <a href="#servicios">Servicios</a><a href="#horarios">Horarios</a><a href="#shop">Shop</a><a href="#convenios">Convenios</a><a href="#contacto">Contacto</a>
+      <a href="#servicios">Servicios</a><a href="#planes">Planes</a><a href="#horarios">Horarios</a><a href="#shop">Shop</a><a href="#convenios">Convenios</a><a href="#contacto">Contacto</a>
     </div>
     <div class="pie__col">
       <p class="kicker">Visitanos</p>
       <a data-mapa href="https://www.google.com/maps/dir/?api=1&amp;destination=Pellegrini+545,+R%C3%ADo+Gallegos,+Santa+Cruz" target="_blank" rel="noopener">Pellegrini 545<br>Río Gallegos, Santa Cruz</a>
-      <p>Lunes a viernes 6 a 23 h<br>Sábados 10 a 20 h</p>
+      <p>Lunes a viernes <span data-hor-lv-txt>06:00 a 23:00 hs</span><br>Sábados <span data-hor-sab-txt>10:00 a 20:00 hs</span></p>
     </div>
     <div class="pie__col">
       <p class="kicker">Seguinos</p>
@@ -341,7 +377,12 @@
   <svg class="pie__marca" viewBox="0 0 744 258" role="img" aria-label="Vientos GYM"><use href="#logo-vientos"/></svg>
   <div class="pie__legal">
     <span>© <span data-anio>2026</span> Vientos GYM · Río Gallegos, Santa Cruz</span>
-    <span>Sitio por <a href="https://grupoamplifia.com" target="_blank" rel="noopener">Grupo Amplifia</a></span>
+    <span class="pie__legal-der">
+      <span>Sitio por <a href="https://grupoamplifia.com" target="_blank" rel="noopener">Grupo Amplifia</a></span>
+      <a class="pie__admin" href="admin.html">
+        <svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg><span>Administración</span>
+      </a>
+    </span>
   </div>
 </footer>
 
@@ -351,6 +392,11 @@
 <button class="fab-pedido" type="button" data-abrir-pedido hidden>
   <svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg><span>Pedido</span><b data-pedido-n>0</b>
 </button>
+
+<dialog class="hoja hoja--servicio" id="hoja-servicio" aria-labelledby="srv-hoja-titulo">
+  <form method="dialog" class="hoja__cerrar-f"><button class="hoja__cerrar" aria-label="Cerrar"><svg class="ico"><use href="#i-close"/></svg></button></form>
+  <div class="hoja__cuerpo" data-hoja-servicio></div>
+</dialog>
 
 <dialog class="hoja" id="hoja-producto" aria-labelledby="hoja-titulo">
   <form method="dialog" class="hoja__cerrar-f"><button class="hoja__cerrar" aria-label="Cerrar"><svg class="ico"><use href="#i-close"/></svg></button></form>
@@ -364,6 +410,10 @@
     <h3 class="hoja__titulo" id="pedido-titulo">Pedido por WhatsApp</h3>
     <ul class="pedido__items" data-pedido-items></ul>
     <p class="pedido__vacio" data-pedido-vacio>Todavía no sumaste productos.</p>
+    <div class="pedido__subtotal" data-pedido-subtotal hidden>
+      <span>Subtotal estimado</span>
+      <b data-pedido-total>$ 0</b>
+    </div>
     <label class="campo"><span>Tu nombre (opcional)</span><input type="text" name="nombre" autocomplete="given-name" maxlength="40" data-pedido-nombre></label>
     <a class="btn btn--red btn--block" data-pedido-enviar href="https://wa.me/5492966218045" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span>Enviar por WhatsApp</span></a>
     <button class="link" type="button" data-pedido-vaciar>Vaciar pedido</button>
@@ -371,10 +421,10 @@
 </dialog>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-<script src="js/datos.js?v=6"></script>
-<script src="js/viento.js?v=5" defer></script>
-<script src="js/main.js?v=7" defer></script>
-<script src="js/shop.js?v=5" defer></script>
-<script src="js/efectos.js?v=5" defer></script>
+<script src="js/datos.js?v=12"></script>
+<script src="js/viento.js?v=12" defer></script>
+<script src="js/main.js?v=12" defer></script>
+<script src="js/shop.js?v=12" defer></script>
+<script src="js/efectos.js?v=12" defer></script>
 </body>
 </html>

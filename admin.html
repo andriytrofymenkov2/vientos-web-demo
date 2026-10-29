@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Administración · Vientos GYM</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/admin.css?v=4">
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="logo-vientos" viewBox="0 0 744 258">
+      <path style="fill:var(--lg-white,#fff)" fill-rule="evenodd" d="M211.8 191.2C216.1 195.91 220.51 200.48 225.32 204.68C232.18 210.67 239.64 215.94 247.25 220.94C263.17 231.39 280.62 239.81 299.14 244.43C314.21 248.19 329.21 249.45 344.7 248.44C350.71 248.05 356.7 247.35 362.62 246.21C373.09 244.19 384.4 240.74 394.44 237.11C401.83 234.44 409.08 231.42 416.51 228.86C429.01 224.54 441.86 221.1 455.02 219.53C474.16 217.26 496.06 217.51 514.98 221.27C520.71 222.41 526.4 223.81 532.01 225.47C536.72 226.85 541.36 228.44 546.03 229.93C549.59 231.07 553.17 232.12 556.76 233.16C552.74 230.13 548.69 227.16 544.39 224.55C537.63 220.45 530.44 217.05 523.24 213.8C509.79 207.75 495.69 202.95 481.14 200.4C463.74 197.34 444.22 197.65 426.91 201.11C418.7 202.75 410.62 205.06 402.74 207.88C394.85 210.7 387.16 214.04 379.18 216.61C364.71 221.28 349.64 224.12 334.48 225.17C325.57 225.79 316.66 225.45 307.77 224.6C299.19 223.78 290.63 222.58 282.23 220.61C271.92 218.2 261.88 214.73 252.1 210.72C246.74 208.52 241.45 206.14 236.27 203.56C231.53 201.19 226.89 198.63 222.17 196.21C218.76 194.46 215.29 192.81 211.8 191.2Z"/>
+      <path style="fill:var(--lg-red,#e0202c)" fill-rule="evenodd" d="M200.2 156.8C203.55 160.71 206.98 164.53 210.77 168.02C218.05 174.73 226.18 180.46 234.42 185.92C245.8 193.46 257.69 200.2 270.49 205.05C296.31 214.84 324.29 217.02 351.38 211.82C361.54 209.87 371.53 206.92 381.26 203.44C389.35 200.55 397.27 197.22 405.4 194.44C417.79 190.22 430.47 187.01 443.48 185.4C463.03 182.98 485.59 183.31 504.9 187.32C510.04 188.38 515.13 189.68 520.16 191.19C524.92 192.62 529.6 194.27 534.32 195.82C537.93 197 541.56 198.09 545.2 199.15C542.62 197.14 540.02 195.15 537.31 193.31C531.31 189.24 524.86 185.81 518.39 182.54C514.36 180.49 510.26 178.56 506.09 176.83C495.09 172.27 481.54 168.15 469.81 166.16C451.83 163.1 431.42 163.48 413.58 167.18C405.71 168.82 397.96 171.06 390.41 173.81C382.6 176.66 375 180.02 367.08 182.59C353.01 187.15 338.34 189.83 323.59 190.91C314.11 191.61 304.63 191.23 295.18 190.3C275.59 188.36 260.82 184.75 242.56 177.37C236.32 174.85 230.18 172.09 224.18 169.07C219.5 166.71 214.92 164.17 210.27 161.75C206.95 160.03 203.58 158.4 200.2 156.8Z"/>
+      <path style="fill:var(--lg-black,#9a9da4)" fill-rule="evenodd" d="M186.5 121.8C192.18 127.34 197.96 132.76 204.09 137.8C209.49 142.24 215.14 146.35 220.95 150.24C237.8 161.51 255.52 170.23 275.35 174.89C284.44 177.03 293.75 178.24 303.09 178.56C323.41 179.25 339.38 176.62 358.72 170.62C363.8 169.03 368.83 167.28 373.81 165.38C379.98 163.04 386.08 160.54 392.31 158.4C400.96 155.42 409.86 153.15 418.84 151.45C432.57 148.86 446.64 147.56 460.61 148.11C466.04 148.33 471.44 148.84 476.83 149.48C482.63 150.18 488.42 151.02 494.14 152.25C502.54 154.05 510.66 156.77 518.82 159.44C522.58 160.67 526.36 161.85 530.15 163.01C526.25 160.22 522.33 157.48 518.23 154.99C511.31 150.79 504.04 147.14 496.63 143.89C490.54 141.22 484.3 138.89 477.96 136.86C461.24 131.51 445.66 129.04 428.1 129.19C418.45 129.27 408.81 130.21 399.36 132.2C390.3 134.1 381.48 136.94 372.82 140.17C365.65 142.85 358.61 145.87 351.35 148.28C338.82 152.43 325.66 155.03 312.5 155.99C281.61 158.24 253.3 152.46 224.81 140.69C219.71 138.58 214.67 136.31 209.73 133.83C205.22 131.57 200.8 129.13 196.34 126.78C193.09 125.07 189.8 123.42 186.5 121.8Z"/>
+      <path style="fill:var(--lg-txt,#e4e5e8)" fill-rule="evenodd" d="M14.43 12L20.94 12A4.6 4.6 0 0 1 24.75 14.02L72.6 84.6L120.45 14.02A4.6 4.6 0 0 1 124.26 12L130.77 12A5 5 0 0 1 134.9 19.81L82.02 97.81A11.38 11.38 0 0 1 63.18 97.81L10.3 19.81A5 5 0 0 1 14.43 12ZM148.6 12L155.2 12A4.6 4.6 0 0 1 159.8 16.6L159.8 98.2A4.6 4.6 0 0 1 155.2 102.8L148.6 102.8A4.6 4.6 0 0 1 144 98.2L144 16.6A4.6 4.6 0 0 1 148.6 12ZM212 12L232.2 12A4.6 4.6 0 0 1 236.8 16.6L236.8 21.2A4.6 4.6 0 0 1 232.2 25.8L206.3 25.8A12.5 9.2 0 0 0 193.8 35L193.8 51L271.6 51A5.2 5.2 0 0 1 276.8 56.2L276.8 59.6A5.2 5.2 0 0 1 271.6 64.8L193.8 64.8L193.8 79.5A13 9.5 0 0 0 206.8 89L271.6 89A5.2 5.2 0 0 1 276.8 94.2L276.8 97.6A5.2 5.2 0 0 1 271.6 102.8L212.5 102.8A34.5 23.5 0 0 1 178 79.3L178 35A34 23 0 0 1 212 12ZM297.6 12L305.16 12A4.6 4.6 0 0 1 308.2 13.15L385 80.9L385 16.6A4.6 4.6 0 0 1 389.6 12L396.2 12A4.6 4.6 0 0 1 400.8 16.6L400.8 98.2A4.6 4.6 0 0 1 396.2 102.8L388.94 102.8A4.6 4.6 0 0 1 385.9 101.65L308.8 33.6L308.8 98.2A4.6 4.6 0 0 1 304.2 102.8L297.6 102.8A4.6 4.6 0 0 1 293 98.2L293 16.6A4.6 4.6 0 0 1 297.6 12ZM415.6 12L503.2 12A4.6 4.6 0 0 1 507.8 16.6L507.8 21.2A4.6 4.6 0 0 1 503.2 25.8L466.8 25.8L466.8 98.2A4.6 4.6 0 0 1 462.2 102.8L455.6 102.8A4.6 4.6 0 0 1 451 98.2L451 25.8L415.6 25.8A4.6 4.6 0 0 1 411 21.2L411 16.6A4.6 4.6 0 0 1 415.6 12ZM544 12L581.8 12A34 23 0 0 1 615.8 35L615.8 79.8A34 23 0 0 1 581.8 102.8L544 102.8A34 23 0 0 1 510 79.8L510 35A34 23 0 0 1 544 12ZM540.8 25.8L585 25.8A15 12 0 0 1 600 37.8L600 77A15 12 0 0 1 585 89L540.8 89A15 12 0 0 1 525.8 77L525.8 37.8A15 12 0 0 1 540.8 25.8ZM682.8 16.6L682.8 21.2A4.6 4.6 0 0 1 678.2 25.8L659.8 25.8A13 8.5 0 0 0 646.8 34.3L646.8 42.5A16 7.5 0 0 0 662.8 50L701.8 50A28 19 0 0 1 729.8 69L729.8 84.8A30 18 0 0 1 699.8 102.8L635.6 102.8A4.6 4.6 0 0 1 631 98.2L631 93.6A4.6 4.6 0 0 1 635.6 89L700 89A14 7.5 0 0 0 714 81.5L714 71.3A12 7.5 0 0 0 702 63.8L662 63.8A31 18 0 0 1 631 45.8L631 31A28 19 0 0 1 659 12L678.2 12A4.6 4.6 0 0 1 682.8 16.6ZM602.2 112.8L567 112.8A22 22 0 0 0 545 134.8L545 143.1A23.5 21.5 0 0 0 568.5 164.6L602.2 164.6A1.2 1.2 0 0 0 603.4 163.4L603.4 136.5A1.2 1.2 0 0 0 602.2 135.3L574.4 135.3A1.2 1.2 0 0 0 573.2 136.5L573.2 145.7A1.2 1.2 0 0 0 574.4 146.9L591 146.9L591 153L571.8 153A14 12.5 0 0 1 557.8 140.5L557.8 134A10.5 9.5 0 0 1 568.3 124.5L602.2 124.5A1.2 1.2 0 0 0 603.4 123.3L603.4 114A1.2 1.2 0 0 0 602.2 112.8ZM610.63 112.8L623.05 112.8A1.2 1.2 0 0 1 623.96 113.21L637.3 128.55L650.64 113.21A1.2 1.2 0 0 1 651.55 112.8L663.97 112.8A1.2 1.2 0 0 1 664.87 114.79L643.6 139.25L643.6 163.4A1.2 1.2 0 0 1 642.4 164.6L632.2 164.6A1.2 1.2 0 0 1 631 163.4L631 139.25L609.73 114.79A1.2 1.2 0 0 1 610.63 112.8ZM671.4 112.8L673.11 112.8A1.2 1.2 0 0 1 673.81 113.02L698.88 130.97A0.8 0.8 0 0 0 699.82 130.97L724.89 113.02A1.2 1.2 0 0 1 725.59 112.8L727.3 112.8A1.2 1.2 0 0 1 728.5 114L728.5 163.4A1.2 1.2 0 0 1 727.3 164.6L717.2 164.6A1.2 1.2 0 0 1 716 163.4L716 134.35L699.35 146.2L682.8 134.35L682.8 163.4A1.2 1.2 0 0 1 681.6 164.6L671.4 164.6A1.2 1.2 0 0 1 670.2 163.4L670.2 114A1.2 1.2 0 0 1 671.4 112.8Z"/>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  </defs>
+</svg>
+
+<section class="adm-login" data-login aria-labelledby="login-titulo">
+  <form class="adm-login__caja" data-login-form>
+    <a href="index.html" class="adm-login__logo" aria-label="Volver a la página">
+      <svg viewBox="0 0 744 258"><use href="#logo-vientos"/></svg>
+    </a>
+    <h1 class="adm-login__titulo" id="login-titulo">Administración</h1>
+    <p class="adm-login__sub">Entrá con el mismo usuario y contraseña de la app de Vientos.</p>
+    <label class="adm-campo">
+      <span>Usuario, DNI o email</span>
+      <input class="adm-input" type="text" name="usuario" autocomplete="username" required data-login-usuario>
+    </label>
+    <label class="adm-campo">
+      <span>Contraseña</span>
+      <input class="adm-input" type="password" name="clave" autocomplete="current-password" required data-login-clave>
+    </label>
+    <button type="submit" class="adm-btn adm-btn--red adm-login__entrar" data-login-entrar>Entrar</button>
+    <p class="adm-login__error" data-login-error role="alert"></p>
+    <a class="adm-login__volver" href="index.html">← Volver a la página</a>
+  </form>
+</section>
+
+<header class="adm-top">
+  <div class="adm-top__izq">
+    <a href="index.html" aria-label="Volver al sitio web">
+      <svg class="adm-top__logo" viewBox="0 0 744 258"><use href="#logo-vientos"/></svg>
+    </a>
+    <span class="adm-top__badge">Panel Admin</span>
+    <span class="adm-top__usuario" data-usuario-sesion></span>
+  </div>
+  <div class="adm-top__der">
+    <a class="adm-btn" href="index.html" target="_blank" rel="noopener">Ver página web ↗</a>
+    <button type="button" class="adm-btn" data-descargar-js>Descargar datos.js</button>
+    <button type="button" class="adm-btn" data-sb-salir>Salir</button>
+    <button type="button" class="adm-btn adm-btn--red" data-guardar-todo>
+      <svg class="ico"><use href="#i-check"/></svg><span>Guardar y publicar</span>
+    </button>
+  </div>
+</header>
+
+<div class="adm-layout">
+  <nav class="adm-nav" aria-label="Secciones del administrador" data-adm-tabs>
+    <button type="button" class="adm-nav__btn is-active" data-tab="horarios">Horarios y Clases</button>
+    <button type="button" class="adm-nav__btn" data-tab="shop">Shop / Productos</button>
+    <button type="button" class="adm-nav__btn" data-tab="servicios">Servicios y Planes</button>
+    <button type="button" class="adm-nav__btn" data-tab="convenios">Convenios y Contacto</button>
+    <button type="button" class="adm-nav__btn" data-tab="supabase">Publicación</button>
+  </nav>
+
+  <main class="adm-main">
+
+    <!-- 1. HORARIOS Y PROGRAMACIÓN SEMANAL -->
+    <section class="adm-panel" data-panel="horarios">
+      <div class="adm-sec">
+        <div class="adm-sec__cab">
+          <div>
+            <h2 class="adm-sec__titulo">Programación Semanal (Lunes a Sábado)</h2>
+            <p class="adm-sec__sub">Agregá, editá o quitá turnos de clases. Se actualizan automáticamente en la grilla interactiva de la web.</p>
+          </div>
+          <button type="button" class="adm-btn adm-btn--red" data-nueva-clase>
+            <svg class="ico"><use href="#i-plus"/></svg><span>Nuevo turno de clase</span>
+          </button>
+        </div>
+        <div class="adm-semana" data-adm-semana></div>
+      </div>
+
+      <div class="adm-sec">
+        <div class="adm-sec__cab">
+          <div>
+            <h2 class="adm-sec__titulo">Horario de Apertura y Aviso de Feriados</h2>
+            <p class="adm-sec__sub">Controla el indicador en vivo "Abierto ahora / Cerrado" y el cartel de horario especial.</p>
+          </div>
+        </div>
+        <div class="adm-grid-3" style="margin-bottom:1.2rem">
+          <div class="adm-campo">
+            <label>Lunes a viernes (Abre — Cierra en hs)</label>
+            <div style="display:flex;gap:.5rem;align-items:center">
+              <input type="number" class="adm-input" min="0" max="24" data-hor-lv-abre>
+              <span>a</span>
+              <input type="number" class="adm-input" min="0" max="24" data-hor-lv-cierra>
+            </div>
+          </div>
+          <div class="adm-campo">
+            <label>Sábados (Abre — Cierra en hs)</label>
+            <div style="display:flex;gap:.5rem;align-items:center">
+              <input type="number" class="adm-input" min="0" max="24" data-hor-sab-abre>
+              <span>a</span>
+              <input type="number" class="adm-input" min="0" max="24" data-hor-sab-cierra>
+            </div>
+          </div>
+          <div class="adm-campo">
+            <label>Aviso de Feriado / Horario Especial</label>
+            <label class="adm-check" style="margin-top:.4rem">
+              <input type="checkbox" data-aviso-activo>
+              <span>Mostrar cartel de aviso especial en la web</span>
+            </label>
+          </div>
+        </div>
+        <div class="adm-grid-2">
+          <div class="adm-campo">
+            <label>Título del aviso (ej. Horario por feriado)</label>
+            <input type="text" class="adm-input" data-aviso-titulo placeholder="Horario especial por feriado">
+          </div>
+          <div class="adm-campo">
+            <label>Mensaje del aviso</label>
+            <input type="text" class="adm-input" data-aviso-texto placeholder="Hoy abrimos de 10:00 a 16:00 hs.">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SHOP / PRODUCTOS -->
+    <section class="adm-panel" data-panel="shop" hidden>
+      <div class="adm-sec">
+        <div class="adm-sec__cab">
+          <div>
+            <h2 class="adm-sec__titulo">Catálogo Vientos Store</h2>
+            <p class="adm-sec__sub">Gestioná productos, precios, stock, talles, colores y subí fotos reales o usá las ilustraciones SVG.</p>
+          </div>
+          <button type="button" class="adm-btn adm-btn--red" data-nuevo-prod>
+            <svg class="ico"><use href="#i-plus"/></svg><span>Nuevo producto</span>
+          </button>
+        </div>
+        <div class="adm-prods" data-adm-prods></div>
+      </div>
+    </section>
+
+    <!-- 3. SERVICIOS Y PLANES -->
+    <section class="adm-panel" data-panel="servicios" hidden>
+      <div class="adm-sec">
+        <div class="adm-sec__cab">
+          <div>
+            <h2 class="adm-sec__titulo">Planes y Pases</h2>
+            <p class="adm-sec__sub">Editá los 3 planes destacados de la sección Planes (nombre, precio o consultar, descripción e ítems).</p>
+          </div>
+        </div>
+        <div class="adm-cards" data-adm-planes></div>
+      </div>
+
+      <div class="adm-sec">
+        <div class="adm-sec__cab">
+          <div>
+            <h2 class="adm-sec__titulo">Disciplinas y Servicios</h2>
+            <p class="adm-sec__sub">Editá textos, resumen de horarios, profesor asignado o foto de cada disciplina.</p>
+          </div>
+        </div>
+        <div class="adm-cards" data-adm-servicios></div>
+      </div>
+    </section>
+
+    <!-- 4. CONVENIOS Y CONTACTO -->
+    <section class="adm-panel" data-panel="convenios" hidden>
+      <div class="adm-sec">
+        <div class="adm-sec__cab">
+          <div>
+            <h2 class="adm-sec__titulo">Empresas y Sindicatos con Convenio</h2>
+            <p class="adm-sec__sub">Se muestran en las cintas en movimiento de la sección Convenios.</p>
+          </div>
+        </div>
+        <form data-form-convenio style="display:flex;gap:.6rem;max-width:28rem">
+          <input type="text" class="adm-input" data-input-convenio placeholder="Nombre de empresa o gremio..." required>
+          <button type="submit" class="adm-btn adm-btn--red">Sumar</button>
+        </form>
+        <div class="adm-chips" data-adm-convenios></div>
+      </div>
+
+      <div class="adm-sec">
+        <div class="adm-sec__cab">
+          <div>
+            <h2 class="adm-sec__titulo">WhatsApp y Enlaces de Contacto</h2>
+            <p class="adm-sec__sub">Número al que llegan los pedidos del Shop y las consultas de clases.</p>
+          </div>
+        </div>
+        <div class="adm-grid-2">
+          <div class="adm-campo">
+            <label>WhatsApp (con código de país, sin + ni espacios)</label>
+            <input type="text" class="adm-input" data-cfg-wa placeholder="5492966218045">
+          </div>
+          <div class="adm-campo">
+            <label>Teléfono visible</label>
+            <input type="text" class="adm-input" data-cfg-tel placeholder="2966 21-8045">
+          </div>
+          <div class="adm-campo">
+            <label>Link de Instagram</label>
+            <input type="url" class="adm-input" data-cfg-ig>
+          </div>
+          <div class="adm-campo">
+            <label>Formulario "El DJ sos vos"</label>
+            <input type="url" class="adm-input" data-cfg-dj>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CONEXIÓN SUPABASE -->
+    <section class="adm-panel" data-panel="supabase" hidden>
+      <div class="adm-sec">
+        <div class="adm-sec__cab">
+          <div>
+            <h2 class="adm-sec__titulo">Publicación</h2>
+            <p class="adm-sec__sub">La web usa el mismo Supabase que la app de socios. Lo que guardes acá se publica en la página para todos. Solo la cuenta administradora (grupoamplifia@gmail.com) puede entrar a este panel.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:.6rem">
+          <button type="button" class="adm-btn" data-sb-traer>Traer lo publicado</button>
+          <button type="button" class="adm-btn adm-btn--danger" data-restaurar-original>Restaurar valores de fábrica</button>
+        </div>
+      </div>
+
+      <div class="adm-sec">
+        <div class="adm-sec__cab">
+          <div>
+            <h2 class="adm-sec__titulo">Script SQL para tu proyecto de Supabase</h2>
+            <p class="adm-sec__sub">Copiá y ejecutá este bloque una sola vez en el SQL Editor de tu Supabase para crear la tabla de la web y el bucket de imágenes. Solo puede editar la cuenta grupoamplifia@gmail.com.</p>
+          </div>
+          <button type="button" class="adm-btn adm-btn--sm" data-copiar-sql>Copiar SQL</button>
+        </div>
+        <pre class="adm-sql" data-sql-code>-- =============================================================================
+-- VIENTOS GYM · Esquema SQL para conectar la web y el panel admin con Supabase
+-- Ejecutá este script una sola vez (después de los scripts de la app) en el SQL Editor de tu proyecto de Supabase.
+-- Va en el MISMO proyecto de Supabase que la app de socios (vientos-gym).
+-- Cualquiera puede LEER el contenido de la web, solo UNA cuenta puede EDITARLA:
+-- grupoamplifia@gmail.com (la cuenta administradora de la app). Nadie más.
+-- =============================================================================
+
+-- Contenido de la web (horarios, shop, servicios, planes y convenios)
+create table if not exists public.vientos_web_contenido (
+  id text primary key default &#x27;principal&#x27;,
+  datos jsonb not null default &#x27;{}&#x27;::jsonb,
+  actualizado_en timestamptz not null default now(),
+  actualizado_por uuid references auth.users(id) on delete set null
+);
+
+-- Quién puede editar la web: solo la cuenta grupoamplifia@gmail.com, con el email confirmado.
+-- El email se lee de auth.users (no del token), así que nadie puede hacerse pasar por ella.
+-- Los socios, los profes y los demás administradores de la app no pueden editar.
+create or replace function public.es_admin_web()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public, auth
+as $$
+  select exists (
+    select 1 from auth.users u
+    where u.id = auth.uid()
+      and lower(u.email) = &#x27;grupoamplifia@gmail.com&#x27;
+      and u.email_confirmed_at is not null
+  );
+$$;
+revoke all on function public.es_admin_web() from public;
+grant execute on function public.es_admin_web() to anon, authenticated;
+
+alter table public.vientos_web_contenido enable row level security;
+grant select on public.vientos_web_contenido to anon, authenticated;
+grant insert, update on public.vientos_web_contenido to authenticated;
+
+drop policy if exists &quot;Lectura publica de contenido web&quot; on public.vientos_web_contenido;
+create policy &quot;Lectura publica de contenido web&quot;
+  on public.vientos_web_contenido for select
+  to anon, authenticated
+  using (true);
+
+drop policy if exists &quot;Escritura admin autenticado&quot; on public.vientos_web_contenido;
+drop policy if exists &quot;Escritura admin web&quot; on public.vientos_web_contenido;
+create policy &quot;Escritura solo administradores web&quot;
+  on public.vientos_web_contenido for all
+  to authenticated
+  using (public.es_admin_web())
+  with check (public.es_admin_web());
+
+-- Fotos de productos y disciplinas
+insert into storage.buckets (id, name, public)
+values (&#x27;vientos-web&#x27;, &#x27;vientos-web&#x27;, true)
+on conflict (id) do nothing;
+
+drop policy if exists &quot;Fotos web publicas&quot; on storage.objects;
+create policy &quot;Fotos web publicas&quot;
+  on storage.objects for select
+  to anon, authenticated
+  using (bucket_id = &#x27;vientos-web&#x27;);
+
+drop policy if exists &quot;Admin sube fotos web&quot; on storage.objects;
+create policy &quot;Admin sube fotos web&quot;
+  on storage.objects for insert
+  to authenticated
+  with check (bucket_id = &#x27;vientos-web&#x27; and public.es_admin_web());
+
+drop policy if exists &quot;Admin actualiza fotos web&quot; on storage.objects;
+create policy &quot;Admin actualiza fotos web&quot;
+  on storage.objects for update
+  to authenticated
+  using (bucket_id = &#x27;vientos-web&#x27; and public.es_admin_web());
+
+-- Para comprobar: con la sesión de grupoamplifia@gmail.com, select public.es_admin_web() tiene que dar true.</pre>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- MODAL CREAR / EDITAR TURNO DE CLASE -->
+<dialog class="adm-modal" id="modal-clase">
+  <form method="dialog" data-form-clase>
+    <div class="adm-modal__cab">
+      <h3 data-modal-clase-tit>Turno de clase</h3>
+      <button type="button" class="adm-btn adm-btn--sm" data-cerrar-modal="modal-clase"><svg class="ico"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="adm-modal__cuerpo">
+      <input type="hidden" data-cl-id>
+      <div class="adm-grid-2">
+        <div class="adm-campo">
+          <label>Disciplina / Servicio</label>
+          <select class="adm-select" data-cl-srv required></select>
+        </div>
+        <div class="adm-campo">
+          <label>Horario (HH:MM)</label>
+          <input type="time" class="adm-input" data-cl-hora required>
+        </div>
+      </div>
+      <div class="adm-campo">
+        <label>Días en que se dicta este turno</label>
+        <div class="adm-dias-check" data-cl-dias>
+          <button type="button" class="adm-dia-toggle" data-d="1" aria-pressed="false">Lunes</button>
+          <button type="button" class="adm-dia-toggle" data-d="2" aria-pressed="false">Martes</button>
+          <button type="button" class="adm-dia-toggle" data-d="3" aria-pressed="false">Miércoles</button>
+          <button type="button" class="adm-dia-toggle" data-d="4" aria-pressed="false">Jueves</button>
+          <button type="button" class="adm-dia-toggle" data-d="5" aria-pressed="false">Viernes</button>
+          <button type="button" class="adm-dia-toggle" data-d="6" aria-pressed="false">Sábado</button>
+        </div>
+      </div>
+      <div class="adm-campo">
+        <label>Profesor/a o subtítulo</label>
+        <input type="text" class="adm-input" data-cl-profe placeholder="Ej. Ezequiel Zanca">
+      </div>
+    </div>
+    <div class="adm-modal__pie">
+      <button type="button" class="adm-btn adm-btn--danger" data-cl-borrar style="margin-right:auto" hidden>Eliminar turno</button>
+      <button type="button" class="adm-btn" data-cerrar-modal="modal-clase">Cancelar</button>
+      <button type="submit" class="adm-btn adm-btn--red">Guardar turno</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- MODAL CREAR / EDITAR PRODUCTO DEL SHOP -->
+<dialog class="adm-modal" id="modal-prod">
+  <form method="dialog" data-form-prod>
+    <div class="adm-modal__cab">
+      <h3 data-modal-prod-tit>Producto del Shop</h3>
+      <button type="button" class="adm-btn adm-btn--sm" data-cerrar-modal="modal-prod"><svg class="ico"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="adm-modal__cuerpo">
+      <input type="hidden" data-pr-id>
+      <div class="adm-grid-2">
+        <div class="adm-campo">
+          <label>Nombre del producto</label>
+          <input type="text" class="adm-input" data-pr-nombre required placeholder="Ej. Remera Oversize">
+        </div>
+        <div class="adm-campo">
+          <label>Categoría</label>
+          <select class="adm-select" data-pr-cat>
+            <option value="ropa">Ropa</option>
+            <option value="suplementos">Suplementos</option>
+          </select>
+        </div>
+      </div>
+      <div class="adm-grid-3">
+        <div class="adm-campo">
+          <label>Precio en $ (vacío = Consultar)</label>
+          <input type="number" class="adm-input" data-pr-precio min="0" step="100" placeholder="Ej. 28000">
+        </div>
+        <div class="adm-campo">
+          <label>Estado de Stock</label>
+          <select class="adm-select" data-pr-stock>
+            <option value="disponible">Disponible</option>
+            <option value="ultimas">Últimas unidades</option>
+            <option value="agotado">Sin stock</option>
+          </select>
+        </div>
+        <div class="adm-campo">
+          <label>Ilustración por defecto</label>
+          <select class="adm-select" data-pr-forma>
+            <option value="remera">Remera</option>
+            <option value="buzo">Buzo Canguro</option>
+            <option value="musculosa">Musculosa</option>
+            <option value="top">Top Deportivo</option>
+            <option value="creatina">Creatina</option>
+            <option value="shaker">Shaker</option>
+          </select>
+        </div>
+      </div>
+      <div class="adm-campo">
+        <label>Descripción corta</label>
+        <input type="text" class="adm-input" data-pr-desc required placeholder="Corte amplio con el logo Vientos al frente.">
+      </div>
+      <div class="adm-grid-2">
+        <div class="adm-campo">
+          <label>Colores (separados por coma)</label>
+          <input type="text" class="adm-input" data-pr-colores placeholder="Negro, Blanco, Rojo">
+        </div>
+        <div class="adm-campo">
+          <label>Talles o Presentaciones (separados por coma)</label>
+          <input type="text" class="adm-input" data-pr-talles placeholder="S, M, L, XL o 300 g, 500 g">
+        </div>
+      </div>
+      <div class="adm-campo">
+        <label>Foto del producto (opcional · si queda vacío se usa la ilustración SVG)</label>
+        <div style="display:flex;gap:.6rem;align-items:center">
+          <input type="text" class="adm-input" data-pr-img placeholder="Ruta o URL de imagen, o subí un archivo ->">
+          <label class="adm-btn adm-btn--sm" style="flex:none;cursor:pointer">
+            <span>Subir foto</span>
+            <input type="file" accept="image/*" data-pr-file hidden>
+          </label>
+        </div>
+      </div>
+      <label class="adm-check">
+        <input type="checkbox" data-pr-nuevo>
+        <span>Destacar con etiqueta "NUEVO"</span>
+      </label>
+    </div>
+    <div class="adm-modal__pie">
+      <button type="button" class="adm-btn adm-btn--danger" data-pr-borrar style="margin-right:auto" hidden>Eliminar producto</button>
+      <button type="button" class="adm-btn" data-cerrar-modal="modal-prod">Cancelar</button>
+      <button type="submit" class="adm-btn adm-btn--red">Guardar producto</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="adm-toast" data-toast role="status">Cambios guardados</div>
+
+<script src="js/datos.js?v=12"></script>
+<script src="js/admin.js?v=6"></script>
+</body>
+</html>

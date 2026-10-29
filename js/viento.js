@@ -1,6 +1,6 @@
 /* Viento de la portada: las tres ondas del logo (gris, roja y blanca) se dibujan cuando entra el título
    y después flamean en la franja entre el texto y los datos. Estelas finas siguen su forma.
-   Mover el mouse sopla más fuerte. */
+   Mover el mouse o hacer scroll sopla más fuerte. */
 (function () {
   var canvas = document.getElementById("viento");
   if (!canvas || !canvas.getContext) return;
@@ -60,7 +60,7 @@
     var x0 = o.x0, x1 = o.x0 + (o.x1 - o.x0) * prog;
     var c = banda.y + banda.h * 0.5 + (k - 1) * sep;
     var ph = o.fase + t * o.vel;
-    var A = amp * (0.9 + 0.1 * Math.sin(t * 0.55 + k * 0.9));
+    var A = amp * (0.9 + 0.1 * Math.sin(t * 0.55 + k * 0.9) + energia * 0.18);
     var N = 120, sup = [], inf = [];
     for (var i = 0; i <= N; i++) {
       var u = i / N, X = x0 + (x1 - x0) * u;
@@ -159,4 +159,12 @@
     px = e.clientX;
   });
   hero.addEventListener("pointerleave", function () { px = null; });
+
+  // El scroll también alimenta la energía de las ondas
+  var sy = window.scrollY;
+  window.addEventListener("scroll", function () {
+    var dy = Math.abs(window.scrollY - sy);
+    sy = window.scrollY;
+    if (visible && dy > 0) energia = Math.min(1, energia + dy / 420);
+  }, { passive: true });
 })();
