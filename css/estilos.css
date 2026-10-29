@@ -610,6 +610,17 @@ body::after {
   .extra__name { font-size: 3.6vw; }
 }
 
+/* Extras sin foto propia: nombre gigante calado sobre rojo profundo */
+.extra--tipo { background: radial-gradient(90% 80% at 85% 10%, rgba(224, 32, 44, .45), transparent 60%), linear-gradient(160deg, #1d1d21, #0e0e10); }
+.extra__palabra { position: absolute; left: -3%; top: 8%; z-index: 0; font-family: var(--display); font-weight: 700; font-style: italic; text-transform: uppercase; font-size: 30vw; line-height: .8; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.5px rgba(243, 241, 236, .16); transform: rotate(-6deg); transition: transform 1.2s var(--ease-out), -webkit-text-stroke-color .6s; }
+.extra--tipo:hover .extra__palabra { transform: rotate(-6deg) translateX(3%); -webkit-text-stroke-color: rgba(224, 32, 44, .55); }
+@media (min-width: 1024px) {
+  .extra__palabra { font-size: 13vw; }
+  /* la foto de la portada ocupa la derecha y se funde con el negro hacia el texto */
+  .hero__media { left: 30%; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 32%); mask-image: linear-gradient(90deg, transparent 0%, #000 32%); }
+  .hero__img { object-position: 50% 35%; }
+}
+
 /* ---------- Shop ---------- */
 .shop { padding: var(--sec) 0; border-top: 1px solid var(--line); }
 .shop__lado { display: grid; gap: 1.4rem; }

@@ -200,7 +200,7 @@
     var grande = i < 2;
     var set = srcset(s.img, [600, 1000, 1600]);
     return '<a class="tile rv" href="' + wa(V.mensajes.clase + (s.largo || s.nombre) + ".") + '" target="_blank" rel="noopener" style="transition-delay:' + ((i < 2 ? i : (i - 2) % 3) * 90) + 'ms">' +
-      '<img src="' + foto(s.img, grande ? 1400 : 1000) + '"' + (set ? ' srcset="' + set + '" sizes="(min-width: 1024px) ' + (grande ? "58vw" : "33vw") + ', 80vw"' : "") + ' alt="" loading="lazy" decoding="async">' +
+      '<img src="' + foto(s.img, grande ? 1400 : 1000) + '"' + (set ? ' srcset="' + set + '" sizes="(min-width: 1024px) ' + (grande ? "58vw" : "33vw") + ', 80vw"' : "") + (s.pos ? ' style="object-position:' + s.pos + '"' : "") + ' alt="" loading="lazy" decoding="async">' +
       '<span class="tile__tag">' + s.tag + "</span>" +
       '<span class="tile__body"><span class="tile__name">' + s.nombre + '</span><span class="tile__meta">' + s.resumen + "</span>" +
       '<span class="tile__desc">' + s.desc + '</span><span class="tile__cta">Consultar</span></span></a>';
@@ -259,8 +259,11 @@
   /* ---------- Además ---------- */
   $("[data-extras]").innerHTML = V.extras.map(function (e, i) {
     var set = srcset(e.img, [700, 1100, 1600]);
-    return '<a class="extra rv" href="' + wa(e.wa) + '" target="_blank" rel="noopener" style="transition-delay:' + (i * 120) + 'ms">' +
-      '<img src="' + foto(e.img, 1100) + '"' + (set ? ' srcset="' + set + '" sizes="(min-width: 1024px) 50vw, 90vw"' : "") + ' alt="" loading="lazy" decoding="async">' +
+    // Sin foto propia del gimnasio: pieza tipográfica con el nombre gigante calado.
+    var fondo = e.img
+      ? '<img src="' + foto(e.img, 1100) + '"' + (set ? ' srcset="' + set + '" sizes="(min-width: 1024px) 50vw, 90vw"' : "") + ' alt="" loading="lazy" decoding="async">'
+      : '<span class="extra__palabra" aria-hidden="true">' + e.nombre + "</span>";
+    return '<a class="extra rv' + (e.img ? "" : " extra--tipo") + '" href="' + wa(e.wa) + '" target="_blank" rel="noopener" style="transition-delay:' + (i * 120) + 'ms">' + fondo +
       '<span class="extra__tag">' + e.tag + "</span>" +
       '<span class="extra__body"><span class="extra__name">' + e.nombre + "</span><p>" + e.desc + '</p><span class="tile__cta">' + e.accion + "</span></span></a>";
   }).join("");

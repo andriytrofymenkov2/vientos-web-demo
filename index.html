@@ -20,7 +20,7 @@
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/barlowc-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/barlowc-700i.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/estilos.css?v=5">
+<link rel="stylesheet" href="css/estilos.css?v=6">
 <script>document.documentElement.classList.add("js");</script>
 <script type="application/ld+json">
 {
@@ -127,11 +127,9 @@
   <section class="hero" id="inicio" aria-label="Inicio">
     <div class="hero__media" aria-hidden="true">
       <img class="hero__img" alt="" fetchpriority="high" decoding="async"
-        src="https://images.unsplash.com/photo-1641337221253-fdc7237f6b61?auto=format&amp;fit=crop&amp;w=1600&amp;q=72"
-        srcset="https://images.unsplash.com/photo-1641337221253-fdc7237f6b61?auto=format&amp;fit=crop&amp;w=800&amp;q=70 800w,
-                https://images.unsplash.com/photo-1641337221253-fdc7237f6b61?auto=format&amp;fit=crop&amp;w=1400&amp;q=72 1400w,
-                https://images.unsplash.com/photo-1641337221253-fdc7237f6b61?auto=format&amp;fit=crop&amp;w=2200&amp;q=72 2200w"
-        sizes="100vw">
+        src="img/vientos/portada.jpg"
+        srcset="img/vientos/portada-chica.jpg 1000w, img/vientos/portada.jpg 2000w"
+        sizes="(min-width: 1024px) 66vw, 100vw">
     </div>
     <canvas class="hero__viento" id="viento" aria-hidden="true"></canvas>
     <div class="hero__inner">
@@ -177,7 +175,7 @@
       <p class="frase rv">La salud por encima de la estética.</p>
     </div>
     <figure class="manifiesto__foto foto revela">
-      <img data-src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2" data-w="1200" alt="Manos tomando una barra antes de levantar" loading="lazy" decoding="async" data-parallax="0.12">
+      <img data-src="img/vientos/manifiesto.jpg" data-w="1300" alt="Socia de Vientos entrenando con cinturón de levantamiento" loading="lazy" decoding="async" data-parallax="0.12">
     </figure>
   </section>
 
@@ -193,7 +191,7 @@
 
   <section class="empezar" id="empezar" aria-labelledby="t-empezar">
     <figure class="empezar__foto foto revela">
-      <img data-src="https://images.unsplash.com/photo-1778828494354-9b717d36dc99" data-w="1400" alt="Sala de musculación con máquinas" loading="lazy" decoding="async" data-parallax="0.1">
+      <img data-src="img/vientos/primera-vez.jpg" data-w="1400" alt="Sala de musculación de Vientos GYM" loading="lazy" decoding="async" data-parallax="0.1">
     </figure>
     <div class="empezar__txt">
       <p class="eyebrow rv">Tu primera vez</p>
@@ -373,9 +371,9 @@
 </dialog>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-<script src="js/datos.js?v=5"></script>
+<script src="js/datos.js?v=6"></script>
 <script src="js/viento.js?v=5" defer></script>
-<script src="js/main.js?v=5" defer></script>
+<script src="js/main.js?v=6" defer></script>
 <script src="js/shop.js?v=5" defer></script>
 <script src="js/efectos.js?v=5" defer></script>
 </body>
