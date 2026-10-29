@@ -163,12 +163,9 @@
     });
   });
 
-  /* ---------- Pedido guardado en este navegador ---------- */
-  var CLAVE = "vientos_pedido_v1";
+  /* ---------- Pedido: vive solo mientras la página está abierta (al recargar empieza vacío) ---------- */
   var pedido = [];
-  try { pedido = JSON.parse(localStorage.getItem(CLAVE)) || []; } catch (e) { pedido = []; }
-  pedido = pedido.filter(function (it) { return it && porId[it.id] && it.cant > 0; });
-  function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(pedido)); } catch (e) { /* sin almacenamiento: el pedido vive mientras la página esté abierta */ } }
+  function guardar() {}
 
   var fab = $("[data-abrir-pedido]"), fabN = $("[data-pedido-n]");
   function pintarFab(rebote) {

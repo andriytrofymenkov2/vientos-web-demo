@@ -20,7 +20,7 @@
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/barlowc-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/barlowc-700i.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/estilos.css?v=4">
+<link rel="stylesheet" href="css/estilos.css?v=5">
 <script>document.documentElement.classList.add("js");</script>
 <script type="application/ld+json">
 {
@@ -68,6 +68,22 @@
     <symbol id="i-music" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M9 18V5.5l11-2V16"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></g></symbol>
   </defs>
 </svg>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <svg class="intro__logo" viewBox="0 0 744 258"><use href="#logo-vientos"/></svg>
+  <span class="intro__linea"></span>
+</div>
+<script>
+(function () {
+  var visto = false;
+  try { visto = sessionStorage.getItem("vientos_intro") === "1"; sessionStorage.setItem("vientos_intro", "1"); } catch (e) {}
+  var intro = document.getElementById("intro");
+  if (visto || matchMedia("(prefers-reduced-motion: reduce)").matches) { intro.parentNode.removeChild(intro); return; }
+  window.vientosIntro = true;
+  setTimeout(function () { intro.classList.add("is-fuera"); }, 1350);
+  setTimeout(function () { if (intro.parentNode) intro.parentNode.removeChild(intro); }, 2400);
+})();
+</script>
 
 <a class="skip" href="#inicio">Saltar al contenido</a>
 
@@ -139,9 +155,10 @@
     <div class="hero__band" aria-hidden="true"></div>
     <div class="hero__pie">
       <ul class="hero__facts" aria-label="Vientos en números">
-        <li><b data-contar="11.5" data-dec="1" data-suf=" mil">11,5 mil</b><span>nos siguen en Instagram</span></li>
-        <li><b data-contar="96" data-suf=" %">96 %</b><span>nos recomienda en Facebook</span></li>
-        <li><b data-contar="12" data-pre="+" data-suf=" años">+12 años</b><span>de adolescentes a adultos mayores</span></li>
+        <li><b data-contar="17" data-suf=" h">17 h</b><span>abiertos cada día hábil</span></li>
+        <li><b data-contar="8">8</b><span>disciplinas para elegir</span></li>
+        <li><b data-contar="12" data-pre="+">+12</b><span>convenios con descuento</span></li>
+        <li><b data-contar="96" data-suf=" %">96 %</b><span>nos recomienda</span></li>
       </ul>
       <a class="hero__scroll" href="#nosotros"><span>Deslizá</span><i></i></a>
     </div>
@@ -176,7 +193,7 @@
 
   <section class="empezar" id="empezar" aria-labelledby="t-empezar">
     <figure class="empezar__foto foto revela">
-      <img data-src="https://images.unsplash.com/photo-1758875569399-99a7d80ace43" data-w="1400" alt="Profe y socia planificando el entrenamiento" loading="lazy" decoding="async" data-parallax="0.1">
+      <img data-src="https://images.unsplash.com/photo-1778828494354-9b717d36dc99" data-w="1400" alt="Sala de musculación con máquinas" loading="lazy" decoding="async" data-parallax="0.1">
     </figure>
     <div class="empezar__txt">
       <p class="eyebrow rv">Tu primera vez</p>
@@ -356,9 +373,10 @@
 </dialog>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-<script src="js/datos.js?v=3"></script>
-<script src="js/viento.js?v=3" defer></script>
-<script src="js/main.js?v=3" defer></script>
-<script src="js/shop.js?v=3" defer></script>
+<script src="js/datos.js?v=5"></script>
+<script src="js/viento.js?v=5" defer></script>
+<script src="js/main.js?v=5" defer></script>
+<script src="js/shop.js?v=5" defer></script>
+<script src="js/efectos.js?v=5" defer></script>
 </body>
 </html>

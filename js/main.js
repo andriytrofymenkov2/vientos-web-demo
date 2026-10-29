@@ -216,7 +216,25 @@
     var p = max > 0 ? tiles.scrollLeft / max : 0;
     barra.style.transform = "translateX(" + (p * (lista.length - 1) * 100) + "%)";
   }
-  tiles.addEventListener("scroll", progreso, { passive: true });
+  // En celular la tarjeta que queda al frente del carrusel se ilumina sola (como el hover de la compu).
+  function marcarActiva() {
+    if (escritorio.matches) { lista.forEach(function (t) { t.classList.remove("is-activa"); }); return; }
+    var pad = parseFloat(getComputedStyle(tiles).paddingLeft) || 0;
+    var base = tiles.getBoundingClientRect().left + pad, mejor = Infinity, activa = null;
+    lista.forEach(function (t) {
+      var d = Math.abs(t.getBoundingClientRect().left - base);
+      if (d < mejor) { mejor = d; activa = t; }
+    });
+    lista.forEach(function (t) { t.classList.toggle("is-activa", t === activa); });
+  }
+  var esperaActiva;
+  tiles.addEventListener("scroll", function () {
+    progreso();
+    clearTimeout(esperaActiva);
+    esperaActiva = setTimeout(marcarActiva, 60);
+  }, { passive: true });
+  escritorio.addEventListener("change", marcarActiva);
+  marcarActiva();
   var pausaCarrusel = 0, tilesVisibles = false;
   ["pointerdown", "touchstart", "wheel"].forEach(function (ev) {
     tiles.addEventListener(ev, function () { pausaCarrusel = Date.now() + 7000; }, { passive: true });
@@ -354,8 +372,11 @@
   function entrarHero() {
     if (listo) return;
     listo = true;
-    requestAnimationFrame(function () { hero.classList.add("is-in"); });
-    setTimeout(function () { $$("[data-contar]").forEach(contar); }, 1150);
+    var espera = window.vientosIntro ? 1500 : 0;   // si hay intro, la portada entra cuando se va
+    setTimeout(function () {
+      requestAnimationFrame(function () { hero.classList.add("is-in"); });
+      setTimeout(function () { $$("[data-contar]").forEach(contar); }, 1150);
+    }, espera);
   }
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(entrarHero);
   setTimeout(entrarHero, 700);
